@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TestProjectASP.Models;
 
 namespace TestProjectASP.Controllers
 {
@@ -7,6 +8,15 @@ namespace TestProjectASP.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Check(Contact contact)
+        {
+            if (ModelState.IsValid) {
+                return Redirect("/");
+            }
+            return View("Index");
         }
     }
 }
